@@ -19,16 +19,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 io.on('connection', socket => {
 
   // Joining room
-  socket.on('joinRoom', ({ username, room }) => {
-    const user = userJoin(socket.id, username, room);
+  socket.on('joinRoom', ({ avatar, username, room }) => {
+    const user = userJoin(socket.id, avatar, username, room);
 
     socket.join(user.room);
 
     // Welcoming user
-    socket.emit('message', formatMessage('Chatcord bot', 'Welcome to chatcord'));
+    socket.emit('message', formatMessage('0', 'Chatcord bot', 'Welcome to chatcord'));
 
     // Broadcast when a user connects to everyone but them
-    socket.broadcast.to(user.room).emit('message', formatMessage('Chatcord bot', `${user.username} has joined the chat`));
+    socket.broadcast.to(user.room).emit('message', formatMessage('0', 'Chatcord bot', `${user.username} has joined the chat`));
 
     // Send users and room info
     io.to(user.room).emit('roomUsers', {
@@ -44,7 +44,7 @@ io.on('connection', socket => {
   socket.on('chatMessage', message => {
     const user = getCurrentUser(socket.id);
 
-    io.to(user.room).emit('message', formatMessage(user.username, message));
+    io.to(user.room).emit('message', formatMessage(user.avatar, user.username, message));
   });
 
   // Runs when client disconnects
@@ -52,7 +52,7 @@ io.on('connection', socket => {
     const user = userLeavesChat(socket.id);
 
     if(user) {
-      io.to(user.room).emit('message', formatMessage('Chatcord bot', `${user.username} has left the chat`));
+      io.to(user.room).emit('message', formatMessage('0', 'Chatcord bot', `${user.username} has left the chat`));
 
       // Send users and room info
       io.to(user.room).emit('roomUsers', {

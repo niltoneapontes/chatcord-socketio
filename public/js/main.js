@@ -4,7 +4,7 @@ const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
 
 // Get username and Room from URL
-const { username, room } = Qs.parse(window.location.search, {
+const { avatar, username, room } = Qs.parse(window.location.search, {
   ignoreQueryPrefix: true,
 });
 
@@ -12,6 +12,7 @@ const socket = io();
 
 // Join chat room
 socket.emit('joinRoom', {
+  avatar,
   username,
   room
 });
@@ -49,6 +50,7 @@ function outputMessage(message) {
   const div = document.createElement('div');
   div.classList.add('message');
   div.innerHTML = `
+    <img src="../assets/${message.avatar}.svg" width="32px" alt="Avatar">
     <p class="meta"> ${message.username} <span>${message.time}</span></p>
     <p class="text">
       ${message.text}
@@ -66,7 +68,7 @@ function outputRoomName(room) {
 function outputUsers(users) {
   userList.innerHTML = `
     ${users.map(user => `
-      <li>${user.username}</li>
+      <li><img src="../assets/${user.avatar}.svg" width="32px" alt="Avatar">${user.username}</li>
     `).join('')}
   `
 }

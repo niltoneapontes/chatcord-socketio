@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 :root {
-	--dark-color-a: #667aff;
-	--dark-color-b: #7386ff;
-	--light-color: #e6e9ff;
+	--dark-color-a: #282828;
+	--dark-color-b: #181818;
+	--light-color: #e9e9ff;
 	--success-color: #5cb85c;
 	--error-color: #d9534f;
 }
@@ -83,6 +83,8 @@ a {
 
 .chat-sidebar ul li {
 	padding: 10px 0;
+	display: flex;
+	align-items: center;
 }
 
 .chat-messages {

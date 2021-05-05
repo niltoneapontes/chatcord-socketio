@@ -1,9 +1,10 @@
 const users = [];
 
 // Join user to chat
-function userJoin(id, username, room) {
+function userJoin(id, avatar, username, room) {
   const user = {
     id,
+    avatar,
     username,
     room
   };
@@ -20,7 +21,7 @@ function userLeavesChat(id) {
   const index = users.findIndex(user => user.id === id);
 
   if(index !== -1) {
-    return users.splice(index,1)[0];
+    return users.splice(index, 1)[0];
   }
 }
 
