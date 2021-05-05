@@ -68,7 +68,7 @@ function outputRoomName(room) {
 function outputUsers(users) {
   userList.innerHTML = `
     ${users.map(user => `
-      <li><img src="../assets/${user.avatar}.svg" width="32px" alt="Avatar">${user.username}</li>
+      <li><img src="../assets/${user.avatar}.svg" alt="Avatar"><p>${user.username}</p></li>
     `).join('')}
-  `
+  `;
 }

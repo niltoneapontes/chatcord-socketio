@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
     integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
   <link rel="stylesheet" href="css/style.css" />
   <title>ChatCord App</title>
 </head>
@@ -19,12 +20,19 @@
     <main class="join-main">
       <form action="chat.html">
         <div class="form-control">
+          <label>Avatar</label>
+          <button class="avatar-option-image" id="0" type="button"><img src="/assets/0.svg" alt="Avatar"></button>
+          <button class="avatar-option-image" id="1" type="button"><img src="/assets/1.svg" alt="Avatar"></button>
+          <button class="avatar-option-image" id="2" type="button"><img src="/assets/2.svg" alt="Avatar"></button>
+          <button class="avatar-option-image" id="3" type="button"><img src="/assets/3.svg" alt="Avatar"></button>
+        </div>
+        <div class="form-control-hidden">
           <label for="avatar">Avatar</label>
           <select name="avatar" id="avatar">
-            <option value="0">Selecione um avatar</option>
-            <option value="1">👩‍🦰</option>
-            <option value="2">👨‍🦰</option>
-            <option value="3">🌻</option>
+            <option class="avatar-option" value="0"></option>
+            <option class="avatar-option" value="1"></option>
+            <option class="avatar-option" value="2"></option>
+            <option class="avatar-option" value="3"></option>
           </select>
         </div>
         <div class="form-control">
@@ -46,6 +54,7 @@
       </form>
     </main>
   </div>
+  <script src="/js/index.js"></script>
 </body>
 
 </html>
